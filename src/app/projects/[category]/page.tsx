@@ -1,7 +1,8 @@
 import { ProjectCategory } from '@/components/ProjectCategory'
 
-export default function CategoryPage({ params }: { params: { category: string } }) {
-  return <ProjectCategory category={params.category} />
+export default async function CategoryPage({ params }: { params: Promise<{ category: string }> }) {
+  const { category } = await params
+  return <ProjectCategory category={category} />
 }
 
 export function generateStaticParams() {

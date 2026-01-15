@@ -3,7 +3,12 @@
 import { useParams } from 'next/navigation'
 import Link from 'next/link'
 import { ArrowLeft, ExternalLink } from 'lucide-react'
-import { Model3DViewer } from '@/components/Model3DViewer'
+import dynamic from 'next/dynamic'
+
+const Model3DViewer = dynamic(
+  () => import('@/components/Model3DViewer').then(mod => ({ default: mod.Model3DViewer })),
+  { ssr: false }
+)
 
 interface Project {
   id: string
